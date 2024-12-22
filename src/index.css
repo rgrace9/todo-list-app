@@ -68,3 +68,48 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.add-task-enter {
+  opacity: 0;
+  transform: translateY(-10px); /* Start with a slight offset */
+}
+
+.add-task-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+}
+
+.add-task-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.add-task-exit-active {
+  opacity: 0;
+  transform: translateY(10px); /* Slight offset when it hides */
+  transition: opacity 300ms ease-in, transform 300ms ease-in;
+}
+
+/* Button transitions */
+.button-enter {
+  opacity: 0;
+}
+
+.button-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-out;
+}
+
+.button-exit {
+  opacity: 1;
+}
+
+.button-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}
+
+.button-placeholder {
+  height: 41px;
+}
