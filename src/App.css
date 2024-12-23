@@ -40,3 +40,23 @@
   margin-top: 1rem;
   padding: 1rem;
 }
+
+.task__content {
+  display: flex;
+  align-items: baseline;
+  h3 {
+    margin: 0;
+  }
+}
+
+.task__checkbox {
+  margin-right: 1rem;
+}
+
+.task__header {
+  display: flex;
+  align-items: center;
+}
+.list {
+  list-style-type: none;
+}

@@ -3,7 +3,12 @@ import "./App.css";
 
 interface AddTaskProps {
   setShowAddTask: Dispatch<SetStateAction<boolean>>;
-  addTask: (task: { title: string; description: string }) => void;
+  addTask: (task: {
+    title: string;
+    description: string;
+    id: string;
+    completed: boolean;
+  }) => void;
 }
 
 const AddTask: React.FC<AddTaskProps> = ({ setShowAddTask, addTask }) => {
@@ -16,7 +21,7 @@ const AddTask: React.FC<AddTaskProps> = ({ setShowAddTask, addTask }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Call the parent function to add the task to the list
-    addTask({ title, description });
+    addTask({ title, description, id: `${Date.now()}`, completed: false });
     // Reset form values and close the form
     setTitle("");
     setDescription("");
