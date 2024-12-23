@@ -73,3 +73,88 @@
     }
   }
   
+.checkbox-content {
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Checkbox Animation */
+  .checkbox-label {
+    font-size: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    color: white;
+  }
+  
+  .checkbox {
+    opacity: 0;
+    position: absolute;
+  }
+  
+  .checkbox-content {
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+  }
+  
+  .checkbox-enter {
+    opacity: 0;
+  }
+  
+  .checkbox-enter-active {
+    opacity: 1;
+  }
+  
+  .checkbox-exit {
+    opacity: 1;
+  }
+  
+  .checkbox-exit-active {
+    opacity: 0;
+  }
+  
+  .checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid white;
+    margin-right: 10px;
+    position: relative;
+    background-color: transparent;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .checkbox:checked + .checkmark {
+    background-color: white;
+    border-color: white;
+  }
+  
+  .checkbox:checked + .checkmark::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid #282c34;
+    border-width: 0 4px 4px 0;
+    transform: rotate(45deg);
+  }
+  
+  .checkbox-label {
+ 
+    font-size: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    opacity: 1;
+    margin-top: 20px;
+  }

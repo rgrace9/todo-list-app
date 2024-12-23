@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { CSSTransition } from "react-transition-group";
 import "./SplashPage.css";
 
 interface SplashPageProps {
@@ -9,12 +10,29 @@ const SplashPage: React.FC<SplashPageProps> = ({ onAnimationEnd }) => {
   const [showContent, setShowContent] = useState(false);
 
   console.log("splash");
+
+  const [checkboxChecked, setCheckboxChecked] = useState(false);
+
   useEffect(() => {
-    // Set a timeout to trigger the content transition after the animation
-    setTimeout(() => {
-      setShowContent(true);
-      onAnimationEnd(); // Notify parent when animation ends
-    }, 3000); // 3 seconds after the animation starts
+    // Step 1: Animate "TODO LIST" text
+    const textTimer = setTimeout(() => {
+      setShowContent(true); // Show the "TODO LIST" after 2 seconds
+
+      // Step 2: Render the checkbox and check it after 1 second
+      setTimeout(() => {
+        setCheckboxChecked(true); // Simulate the checkbox being checked
+      }, 1000); // Delay for checkbox animation after text animation
+    }, 2000); // 2 seconds after the "TODO LIST" animation starts
+
+    // Step 3: Call onAnimationEnd() after the checkbox animation
+    const checkboxTimer = setTimeout(() => {
+      onAnimationEnd(); // Notify parent when checkbox animation finishes
+    }, 4000); // 4 seconds after the "TODO LIST" text animation to call onAnimationEnd()
+
+    return () => {
+      clearTimeout(textTimer);
+      clearTimeout(checkboxTimer);
+    };
   }, [onAnimationEnd]);
 
   return (
@@ -47,12 +65,26 @@ const SplashPage: React.FC<SplashPageProps> = ({ onAnimationEnd }) => {
             T
           </span>
         </h1>
-        {showContent && (
-          <div className="next-content">
-            {/* The content after animation finishes */}
-            <h2>Welcome to your Todo List</h2>
+        <CSSTransition
+          in={showContent}
+          timeout={500} // Duration of the transition
+          classNames="checkbox" // Define CSS class names for the transition
+          unmountOnExit
+        >
+          <div className="checkbox-content">
+            {/* Show the checkbox after the text animation */}
+            <label className="checkbox-label">
+              <input
+                type="checkbox"
+                checked={checkboxChecked}
+                onChange={() => {}}
+                className="checkbox"
+              />
+              <span className="checkmark" />
+              Task Completed
+            </label>
           </div>
-        )}
+        </CSSTransition>
       </div>
     </div>
   );
