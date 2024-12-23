@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
+import { Task } from "../types/Task"; // Import Task type
 import AddTask from "./AddTask";
 import "./App.css";
 import TasksList from "./TasksList";
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false);
-  const [tasks, setTasks] = useState<
-    { title: string; description: string; id: string; completed: boolean }[]
-  >([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
 
   useEffect(() => {
     const savedTasks = localStorage.getItem("tasks");
@@ -18,12 +17,7 @@ function App() {
   }, []);
 
   // Function to add a new task
-  const addTask = (task: {
-    title: string;
-    description: string;
-    id: string;
-    completed: boolean;
-  }) => {
+  const addTask = (task: Task) => {
     // const updatedTasks = [...tasks, task];
     setTasks((prevTasks) => [...prevTasks, task]);
     localStorage.setItem("tasks", JSON.stringify(tasks));

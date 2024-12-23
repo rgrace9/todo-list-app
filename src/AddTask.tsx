@@ -1,14 +1,10 @@
 import { Dispatch, SetStateAction, useRef, useState } from "react";
+import { Task } from "../types/Task"; // Import Task type
 import "./App.css";
 
 interface AddTaskProps {
   setShowAddTask: Dispatch<SetStateAction<boolean>>;
-  addTask: (task: {
-    title: string;
-    description: string;
-    id: string;
-    completed: boolean;
-  }) => void;
+  addTask: (task: Task) => void;
 }
 
 const AddTask: React.FC<AddTaskProps> = ({ setShowAddTask, addTask }) => {
@@ -28,7 +24,6 @@ const AddTask: React.FC<AddTaskProps> = ({ setShowAddTask, addTask }) => {
     if (titleInputRef.current) {
       titleInputRef.current.focus();
     }
-    // setShowAddTask(false);
   };
   return (
     <form className="form" onSubmit={handleSubmit}>

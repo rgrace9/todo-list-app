@@ -1,12 +1,5 @@
 import React from "react";
-
-interface Task {
-  title: string;
-  description: string;
-  id: string;
-  completed: boolean;
-}
-
+import { Task } from "../types/Task"; // Import Task type
 interface TasksListProps {
   tasks: Task[];
   removeTask: (id: string) => void;
