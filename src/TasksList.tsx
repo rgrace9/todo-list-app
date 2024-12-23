@@ -15,7 +15,7 @@ const TasksList: React.FC<TasksListProps> = ({
     <div>
       <ul className="list">
         {tasks.map((task, index) => (
-          <li key={index}>
+          <li key={index} className="task">
             <div className="task__content">
               <input
                 type="checkbox"
