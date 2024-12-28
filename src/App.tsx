@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import SplashPage from "./SplashPage"; // Assuming SplashPage is in a separate file
-import TodoList from "./TodoList"; // Assuming TodoList is in a separate file
+import SplashPage from "./SplashPage";
+import TodoList from "./TodoList";
 
 const TodoApp: React.FC = () => {
   const [isSplashDone, setIsSplashDone] = useState(false);
 
-  // Function to handle when splash animation ends
   const handleSplashEnd = () => {
     setIsSplashDone(true);
   };
 
   return (
-    <div>
+    <div className="content">
       {!isSplashDone ? (
         <SplashPage onAnimationEnd={handleSplashEnd} />
       ) : (

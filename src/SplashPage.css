@@ -140,10 +140,10 @@
   .checkbox:checked + .checkmark::after {
     content: '';
     position: absolute;
-    left: 6px;
-    top: 2px;
-    width: 5px;
-    height: 10px;
+    left: 5px;
+    top: 1px;
+    width: 7px;
+    height: 13px;
     border: solid #282c34;
     border-width: 0 4px 4px 0;
     transform: rotate(45deg);

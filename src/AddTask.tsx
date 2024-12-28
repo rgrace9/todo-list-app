@@ -43,12 +43,12 @@ const AddTask: React.FC<AddTaskProps> = ({ setShowAddTask, addTask }) => {
           onChange={(e) => setDescription(e.target.value)}
           value={description}
           rows={8}
-          //   onKeyDown={(e) => {
-          //     if (e.key === "Enter" && !e.shiftKey) {
-          //       e.preventDefault(); // Prevent form submission when Enter is pressed
-          //       handleSubmit(e); // Submit the form when Enter is pressed
-          //     }
-          //   }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && !e.shiftKey) {
+              e.preventDefault(); // Prevent form submission when Enter is pressed
+              handleSubmit(e); // Submit the form when Enter is pressed
+            }
+          }}
         ></textarea>
       </div>
       <div className="form__footer">

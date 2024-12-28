@@ -29,9 +29,13 @@ const TasksList: React.FC<TasksListProps> = ({
               <label data-content={task.title} htmlFor={task.id}>
                 {task.title}
               </label>
-              <p className="task__description">{task.description}</p>
             </div>
-            <button onClick={() => removeTask(task.id)}>Remove</button>
+            {task.description && (
+              <p className="task__description">{task.description}</p>
+            )}
+            <div className="task__footer">
+              <button onClick={() => removeTask(task.id)}>Remove</button>
+            </div>
           </li>
         ))}
       </ul>

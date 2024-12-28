@@ -3,8 +3,13 @@ import { CSSTransition } from "react-transition-group";
 import { Task } from "../types/Task"; // Import Task type
 import AddTask from "./AddTask";
 import "./App.css";
-import SampleTodoList from "./SampleTodoList";
 import TasksList from "./TasksList";
+const today = new Date();
+const formattedDate = today.toLocaleDateString("en-US", {
+  month: "long", // Full month name
+  day: "numeric", // Day of the month as a number
+  year: "numeric", // Full year
+});
 
 function App() {
   const [showAddTask, setShowAddTask] = useState(false);
@@ -19,9 +24,9 @@ function App() {
 
   // Function to add a new task
   const addTask = (task: Task) => {
-    // const updatedTasks = [...tasks, task];
-    setTasks((prevTasks) => [...prevTasks, task]);
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+    const updatedTasks = [...tasks, task];
+    setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
 
   // Function to remove a task
@@ -42,7 +47,8 @@ function App() {
   return (
     <>
       <div>
-        <h1>Today</h1>
+        <h1 className="heading">Today</h1>
+        <p>{formattedDate}</p>
         <p>
           {tasks.length} task{tasks.length !== 1 && "s"}
         </p>
@@ -78,7 +84,6 @@ function App() {
             <AddTask addTask={addTask} setShowAddTask={setShowAddTask} />
           </div>
         </CSSTransition>
-        <SampleTodoList />
       </div>
     </>
   );
