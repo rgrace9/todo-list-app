@@ -3,6 +3,7 @@ import { CSSTransition } from "react-transition-group";
 import { Task } from "../types/Task"; // Import Task type
 import AddTask from "./AddTask";
 import "./App.css";
+import SampleTodoList from "./SampleTodoList";
 import TasksList from "./TasksList";
 
 function App() {
@@ -77,6 +78,7 @@ function App() {
             <AddTask addTask={addTask} setShowAddTask={setShowAddTask} />
           </div>
         </CSSTransition>
+        <SampleTodoList />
       </div>
     </>
   );
