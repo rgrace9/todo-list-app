@@ -43,14 +43,14 @@
 
 .task__content {
   display: flex;
-  align-items: baseline;
-  h3 {
+  align-items: center;
+  label {
     margin: 0;
   }
 }
 
 .task__checkbox {
-  margin-right: 1rem;
+  /* margin-right: 1rem; */
 }
 
 .task__header {
@@ -59,4 +59,7 @@
 }
 .list {
   list-style-type: none;
+}
+.task__description {
+  display: block;
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import { Task } from "../types/Task"; // Import Task type
+import "./TodoList.css"; // Assuming the CSS is stored here
 interface TasksListProps {
   tasks: Task[];
   removeTask: (id: string) => void;
@@ -22,11 +23,13 @@ const TasksList: React.FC<TasksListProps> = ({
                 checked={task.completed}
                 onChange={() => toggleTaskCompletion(task.id)} // Toggle completion when checked
                 className="task__checkbox"
+                id={task.id}
+                name={task.id}
               />
-              <div>
-                <h3>{task.title}</h3>
-                <p>{task.description}</p>
-              </div>
+              <label data-content={task.title} htmlFor={task.id}>
+                {task.title}
+              </label>
+              <p className="task__description">{task.description}</p>
             </div>
             <button onClick={() => removeTask(task.id)}>Remove</button>
           </li>

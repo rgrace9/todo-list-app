@@ -16,9 +16,8 @@ const SplashPage: React.FC<SplashPageProps> = ({ onAnimationEnd }) => {
   useEffect(() => {
     // Step 1: Animate "TODO LIST" text
     const textTimer = setTimeout(() => {
-      setShowContent(true); // Show the "TODO LIST" after 2 seconds
-
-      // Step 2: Render the checkbox and check it after 1 second
+      setShowContent(true);
+      // Step 2: Render the checkbox and check it
       setTimeout(() => {
         setCheckboxChecked(true); // Simulate the checkbox being checked
       }, 1000); // Delay for checkbox animation after text animation
