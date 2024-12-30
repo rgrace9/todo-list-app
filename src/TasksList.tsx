@@ -1,6 +1,8 @@
 import React from "react";
-import { Task } from "../types/Task"; // Import Task type
-import "./TodoList.css"; // Assuming the CSS is stored here
+import { Task } from "../types/Task";
+import "./TodoList.css";
+import Dropdown from "./components/Dropdown";
+import TrashIcon from "./components/TrashIcon";
 interface TasksListProps {
   tasks: Task[];
   removeTask: (id: string) => void;
@@ -34,7 +36,14 @@ const TasksList: React.FC<TasksListProps> = ({
               <p className="task__description">{task.description}</p>
             )}
             <div className="task__footer">
-              <button onClick={() => removeTask(task.id)}>Remove</button>
+              <Dropdown
+                menu={[
+                  <button onClick={() => removeTask(task.id)}>
+                    <TrashIcon width="14px" height="14px" />
+                    Remove
+                  </button>,
+                ]}
+              />
             </div>
           </li>
         ))}
