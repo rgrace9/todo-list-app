@@ -57,10 +57,11 @@ const AddTask: React.FC<AddTaskProps> = ({ setShowAddTask, addTask }) => {
             setShowAddTask(false);
           }}
           type="button"
+          className="button"
         >
           Cancel
         </button>
-        <button type="submit" onClick={handleSubmit}>
+        <button className="button" type="submit" onClick={handleSubmit}>
           Add Task
         </button>
       </div>

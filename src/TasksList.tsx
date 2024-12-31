@@ -28,7 +28,11 @@ const TasksList: React.FC<TasksListProps> = ({
                 id={task.id}
                 name={task.id}
               />
-              <label data-content={task.title} htmlFor={task.id}>
+              <label
+                data-content={task.title}
+                htmlFor={task.id}
+                className="task__title"
+              >
                 {task.title}
               </label>
             </div>

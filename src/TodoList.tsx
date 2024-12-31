@@ -68,8 +68,11 @@ function App() {
           classNames="button"
           unmountOnExit
         >
-          <button onClick={() => setShowAddTask((prevValue) => !prevValue)}>
-            {"Add Task"}
+          <button
+            className="button"
+            onClick={() => setShowAddTask((prevValue) => !prevValue)}
+          >
+            Add Task
           </button>
         </CSSTransition>
 
