@@ -9,7 +9,7 @@
     padding: 0;
     border: 1px solid grey;
     width: 150px;
-    right: 50px;
+    /* right: 50px; */
 }
 
 .menu>li {
