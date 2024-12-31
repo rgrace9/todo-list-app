@@ -52,7 +52,6 @@
     background-color: #fff;
     border-radius: 50%;
     margin: 3px 0;
-    /* Space between dots */
 }
 
 .dropdown__button {
@@ -65,7 +64,6 @@
     background-color: #1a1a1a;
     cursor: pointer;
     transition: border-color 0.25s;
-    margin-right: 50px;
 }
 
 .dropdown__button:hover {
