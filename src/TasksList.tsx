@@ -6,7 +6,7 @@ import TrashIcon from "./components/TrashIcon";
 interface TasksListProps {
   tasks: Task[];
   removeTask: (id: string) => void;
-  toggleTaskCompletion: (id: string) => void; // Function to toggle completion state
+  toggleTaskCompletion: (id: string) => void;
 }
 
 const TasksList: React.FC<TasksListProps> = ({
