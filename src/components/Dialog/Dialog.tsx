@@ -1,19 +1,33 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 interface DialogProps {
-  onClose: (value: boolean) => void;
+  onClose: () => void;
+  footer?: ReactNode;
+  header?: ReactNode;
+  children: ReactNode;
+  size: "small" | "medium" | "large";
 }
 
-const Dialog: React.FC<DialogProps> = ({ onClose }) => {
+const Dialog: React.FC<DialogProps> = ({
+  onClose,
+  size,
+  header,
+  footer,
+  children,
+}) => {
+  const className = `dialog ${size}`;
   return (
-    <section>
-      <div className="backdrop" onClick={() => onClose(false)}></div>
-      <div className="dialog">
-        <button className="close-button" onClick={() => onClose(false)}>
+    <>
+      <div className="backdrop" onClick={onClose}></div>
+      <div className={className}>
+        <button className="close-button" onClick={onClose}>
           Close
         </button>
+        <div className="header">{header}</div>
+        <div className="content">{children}</div>
+        <div className="footer">{footer}</div>
       </div>
-    </section>
+    </>
   );
 };
 
