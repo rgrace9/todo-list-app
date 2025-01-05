@@ -10,6 +10,7 @@ interface AddTaskProps {
 const AddTask: React.FC<AddTaskProps> = ({ setShowAddTask, addTask }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [hasError, setHasError] = useState(false);
 
   const titleInputRef = useRef<HTMLInputElement>(null);
 
@@ -17,6 +18,10 @@ const AddTask: React.FC<AddTaskProps> = ({ setShowAddTask, addTask }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Call the parent function to add the task to the list
+    if (!title) {
+      setHasError(true);
+      return;
+    }
     addTask({ title, description, id: `${Date.now()}`, completed: false });
     // Reset form values and close the form
     setTitle("");
@@ -28,7 +33,8 @@ const AddTask: React.FC<AddTaskProps> = ({ setShowAddTask, addTask }) => {
   return (
     <form className="form" onSubmit={handleSubmit}>
       <div className="form__content">
-        <label>Title</label>
+        <p>{hasError && "Title is required"}</p>
+        <label>Title*</label>
         <input
           className="form__input"
           autoFocus

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Task } from "../types/Task";
 import "./TodoList.css";
+import Dialog from "./components/Dialog/Dialog";
 import Dropdown from "./components/Dropdown";
-import TrashIcon from "./components/TrashIcon";
+import TrashIcon from "./components/icons/TrashIcon";
 interface TasksListProps {
   tasks: Task[];
   removeTask: (id: string) => void;
@@ -14,6 +15,11 @@ const TasksList: React.FC<TasksListProps> = ({
   removeTask,
   toggleTaskCompletion,
 }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleDelete = (id: string) => {
+    // removeTask(id)
+    setIsOpen(true);
+  };
   return (
     <div>
       <ul className="list">
@@ -42,7 +48,7 @@ const TasksList: React.FC<TasksListProps> = ({
             <div className="task__footer">
               <Dropdown
                 menu={[
-                  <button onClick={() => removeTask(task.id)}>
+                  <button onClick={() => handleDelete(task.id)}>
                     <TrashIcon width="14px" height="14px" />
                     Remove
                   </button>,
@@ -52,6 +58,35 @@ const TasksList: React.FC<TasksListProps> = ({
           </li>
         ))}
       </ul>
+      {isOpen && (
+        <Dialog
+          onClose={() => {
+            setIsOpen(false);
+          }}
+          size="small"
+          header={<h2>Are you sure?</h2>}
+          footer={
+            <div className="button-group">
+              <button className="button--outline" type="button">
+                Cancel
+              </button>
+              <button className="button" type="button">
+                Delete
+              </button>
+            </div>
+          }
+        >
+          <p className="dialog__content">
+            Are you sure you want to delete this task? Are you sure you want to
+            delete this task? Are you sure you want to delete this task? Are you
+            sure you want to delete this task? Are you sure you want to delete
+            sure you want to delete this task? Are you sure you want to delete
+            sure you want to delete this task? Are you sure you want to delete
+            sure you want to delete this task? Are you sure you want to delete
+            this task?
+          </p>
+        </Dialog>
+      )}
     </div>
   );
 };

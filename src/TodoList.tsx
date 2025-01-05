@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
-import { Task } from "../types/Task"; // Import Task type
+import { Task } from "../types/Task";
 import AddTask from "./AddTask";
 import "./App.css";
 import TasksList from "./TasksList";
 const today = new Date();
 const formattedDate = today.toLocaleDateString("en-US", {
+  weekday: "long", // Full day of the week
   month: "long", // Full month name
   day: "numeric", // Day of the month as a number
   year: "numeric", // Full year

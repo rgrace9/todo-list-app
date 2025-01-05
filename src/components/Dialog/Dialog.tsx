@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-
+import "./Dialog.css";
 interface DialogProps {
   onClose: () => void;
   footer?: ReactNode;
@@ -20,12 +20,10 @@ const Dialog: React.FC<DialogProps> = ({
     <>
       <div className="backdrop" onClick={onClose}></div>
       <div className={className}>
-        <button className="close-button" onClick={onClose}>
-          Close
-        </button>
-        <div className="header">{header}</div>
-        <div className="content">{children}</div>
-        <div className="footer">{footer}</div>
+        <button className="close-button" onClick={onClose} />
+        <div className="dialog__header">{header}</div>
+        <div className="dialog__content">{children}</div>
+        <div className="dialog__footer">{footer}</div>
       </div>
     </>
   );
