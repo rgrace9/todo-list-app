@@ -16,10 +16,20 @@ const TasksList: React.FC<TasksListProps> = ({
   toggleTaskCompletion,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedTaskId, setSelectedTaskId] = useState<string | null>(null);
+
   const handleDelete = (id: string) => {
-    // removeTask(id)
+    setSelectedTaskId(id);
     setIsOpen(true);
   };
+
+  const handleConfirmDelete = () => {
+    if (selectedTaskId) {
+      removeTask(selectedTaskId);
+      setIsOpen(false);
+    }
+  };
+
   return (
     <div>
       <ul className="list">
@@ -70,7 +80,11 @@ const TasksList: React.FC<TasksListProps> = ({
               <button className="button--outline" type="button">
                 Cancel
               </button>
-              <button className="button" type="button">
+              <button
+                className="button"
+                type="button"
+                onClick={handleConfirmDelete}
+              >
                 Delete
               </button>
             </div>
