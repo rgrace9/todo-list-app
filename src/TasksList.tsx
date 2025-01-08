@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Task } from "../types/Task";
-import "./TodoList.css";
 import Dialog from "./components/Dialog/Dialog";
 import Dropdown from "./components/Dropdown";
 import TrashIcon from "./components/icons/TrashIcon";
+import EditTask from "./EditTask";
+import "./TodoList.css";
 interface TasksListProps {
   tasks: Task[];
   removeTask: (id: string) => void;
@@ -13,14 +14,21 @@ interface TasksListProps {
 const TasksList: React.FC<TasksListProps> = ({
   tasks,
   removeTask,
+  editTask,
   toggleTaskCompletion,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isEditOpen, setIsEditOpen] = useState(false);
   const [selectedTaskId, setSelectedTaskId] = useState<string | null>(null);
 
   const handleDelete = (id: string) => {
     setSelectedTaskId(id);
     setIsOpen(true);
+  };
+
+  const handleEdit = (task: Task) => {
+    setSelectedTaskId(task.id);
+    setIsEditOpen(true);
   };
 
   const handleConfirmDelete = () => {
@@ -58,6 +66,7 @@ const TasksList: React.FC<TasksListProps> = ({
             <div className="task__footer">
               <Dropdown
                 menu={[
+                  <button onClick={() => handleEdit(task)}>Edit</button>,
                   <button onClick={() => handleDelete(task.id)}>
                     <TrashIcon width="14px" height="14px" />
                     Remove
@@ -68,6 +77,13 @@ const TasksList: React.FC<TasksListProps> = ({
           </li>
         ))}
       </ul>
+      {isEditOpen && tasks.length && (
+        <EditTask
+          task={tasks.find((task) => task.id === selectedTaskId)}
+          setIsOpen={setIsEditOpen}
+          editTask={editTask}
+        />
+      )}
       {isOpen && (
         <Dialog
           onClose={() => {

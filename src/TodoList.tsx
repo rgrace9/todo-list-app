@@ -23,16 +23,22 @@ function App() {
     }
   }, []);
 
-  // Function to add a new task
   const addTask = (task: Task) => {
     const updatedTasks = [...tasks, task];
     setTasks(updatedTasks);
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
 
-  // Function to remove a task
   const removeTask = (id: string) => {
     const updatedTasks = tasks.filter((task) => task.id !== id);
+    setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+  };
+
+  const editTask = (updatedTask: Task) => {
+    const updatedTasks = tasks.map((task) =>
+      task.id === updatedTask.id ? { ...task, ...updatedTask } : task
+    );
     setTasks(updatedTasks);
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   };
@@ -59,6 +65,7 @@ function App() {
           <TasksList
             toggleTaskCompletion={toggleTaskCompletion}
             removeTask={removeTask}
+            editTask={editTask}
             tasks={tasks}
           />
         )}
