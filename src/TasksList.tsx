@@ -9,6 +9,7 @@ interface TasksListProps {
   tasks: Task[];
   removeTask: (id: string) => void;
   toggleTaskCompletion: (id: string) => void;
+  editTask: (task: Task) => void;
 }
 
 const TasksList: React.FC<TasksListProps> = ({
